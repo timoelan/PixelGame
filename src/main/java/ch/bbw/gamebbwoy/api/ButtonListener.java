@@ -29,7 +29,8 @@ public interface ButtonListener {
 		S,
 		D,
 		E,
-		Q
-	}
+		Q;
+
+    }
 
 }

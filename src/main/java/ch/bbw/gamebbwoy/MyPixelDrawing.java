@@ -6,47 +6,83 @@ import ch.bbw.gamebbwoy.api.PixelDisplay;
 import ch.bbw.gamebbwoy.api.PixelDrawing;
 import ch.bbw.gamebbwoy.internal.GameBbwoy;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.io.Serializable;
 import java.util.List;
 
-public class MyPixelDrawing implements PixelDrawing, ButtonListener {
+public class MyPixelDrawing implements Serializable, PixelDrawing, ButtonListener {
 
 	public static void main(String[] args) throws Throwable {
 		GameBbwoy.playGame(new MyPixelDrawing());
 	}
 
+	public int x_offset = 0;
+	public int y_offset = 0;
+
 	@Override
 	public void tick(PixelDisplay graphic) {
-		//graphic.clear();
+		graphic.clear();
+		Player1(graphic);
 
 
+
+		}
+
+void Map(PixelDisplay graphic){
+		var list = List.of();
+}
+
+void Player2(PixelDisplay graphic){
 		var list = List.of(
-				0, 0, 0, 1, 1, 1, 1, 0, 0, 0,
-				0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
-				0, 1, 0, 0, 0, 0, 0, 0, 1, 0,
-				1, 0, 0, 3, 0, 0, 3, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-				1, 0, 0, 3, 0, 0, 3, 0, 0, 1,
-				0, 1, 0, 0, 3, 3, 0, 0, 1, 0,
-				0, 0, 1, 0, 0, 0, 0, 1, 0, 0,
-				0, 0, 0, 1, 1, 1, 1, 0, 0, 0
+
+		);
+}
+
+
+	void Player1(PixelDisplay graphic){
+		var list = List.of(
+
+				0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 3, 1, 3, 0, 0, 0, 0, 0, 0, 0,
+				0, 0, 0, 0, 0, 3, 1, 3, 0, 3, 3, 0, 0, 0, 0,
+				0, 0, 0, 0, 3, 1, 1, 1, 3, 1, 1, 3, 0, 0, 0,
+				0, 0, 0, 0, 0, 3, 2, 3, 3, 0, 1, 0, 3, 0, 0,
+				0, 0, 0, 0, 0, 3, 1, 3, 3, 2, 2, 3, 0, 0, 0,
+				0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 3, 0, 0,
+				0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 3, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 3, 1, 3, 0,
+				0, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 3, 2, 3, 0,
+				0, 0, 0, 0, 0, 0, 3, 1, 3, 3, 3, 1, 3, 0, 0,
+				0, 0, 0, 0, 0, 0, 3, 2, 3, 0, 3, 2, 3, 0, 0,
+				0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 		);
 
 
-		for(int x = 0; x <10; x++){
-			for (int y = 0; y<10; y++){
-				graphic.setPixel(40 + x,50 + y,
-						PixelColor.fromValue(list.get(x+y*10)));
-			}
-		}
-		// sets a pixel top left
+		for(int x = 0; x <15; x++){
+			for (int y = 0; y<15; y++){
+				graphic.setPixel(1 + x + x_offset,1 + y + y_offset,
+						PixelColor.fromValue(list.get(x+y*15)));
 
+			}
 	}
+}
 
 	@Override
-	public void onButtonPress(GameButton button) {
-
+	public void onButtonPress(GameButton Button){
+		System.out.println(Button);
 	}
+
+
+
+
+
+
+
+
+
 
 	@Override
 	public void onButtonRelease(GameButton button) {
