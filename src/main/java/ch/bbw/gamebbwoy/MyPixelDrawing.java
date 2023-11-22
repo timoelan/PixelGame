@@ -19,11 +19,14 @@ public class MyPixelDrawing implements Serializable, PixelDrawing, ButtonListene
 
 	public int x_offset = 0;
 	public int y_offset = 0;
+	public int n_y_offset = 0;
+	public int n_x_offset = 0;
 
 	@Override
 	public void tick(PixelDisplay graphic) {
 		graphic.clear();
 		Player1(graphic);
+
 
 
 
@@ -38,6 +41,7 @@ void Player2(PixelDisplay graphic){
 
 		);
 }
+
 
 
 	void Player1(PixelDisplay graphic){
@@ -71,8 +75,20 @@ void Player2(PixelDisplay graphic){
 }
 
 	@Override
-	public void onButtonPress(GameButton Button){
-		System.out.println(Button);
+	public void onButtonPress(GameButton button){
+		System.out.println(button);
+		if (button == GameButton.W){
+			y_offset-=1;
+		}
+		if (button == GameButton.A){
+			x_offset-=1;
+		}
+		if (button == GameButton.S) {
+			y_offset+=1;
+		}
+		if (button == GameButton.D) {
+			x_offset += 1;
+		}
 	}
 
 
